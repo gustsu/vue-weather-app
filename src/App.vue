@@ -1,25 +1,17 @@
 <template>
 	<div id="app">
-		<md-toolbar class="md-primary" md-elevation="5" id="nav">
-			<h3 class="md-title" id="logo" style="flex: 1">Logo</h3>
-			<router-link :to="{ name: 'home' }">
-				<md-button>Home</md-button>
-			</router-link>
-			<router-link :to="{ name: 'locations' }">
-				<md-button>Locations</md-button>
-			</router-link>
-			<router-link :to="{ name: 'about' }">
-				<md-button>About</md-button>
-			</router-link>
-			<router-link :to="{ name: 'settings' }">
-				<md-button>Settings</md-button>
-			</router-link>
-		</md-toolbar>
-
 		<router-view />
+		<NavBar />
 	</div>
 </template>
-
+<script>
+import NavBar from '@/components/NavBar.vue';
+export default {
+	components: {
+		NavBar
+	}
+};
+</script>
 <style lang="scss">
 // setup theme
 @import '~vue-material/dist/theme/engine';
@@ -32,4 +24,16 @@
 	)
 );
 @import '~vue-material/dist/theme/all';
+
+// body,
+// html {
+// 	min-height: 100vh;
+// 	background: #f0f0f0;
+// }
+
+// #app {
+// 	max-width: 440px;
+// 	width: 100%;
+// 	margin: 0px auto;
+// }
 </style>
