@@ -5,8 +5,14 @@
 			<router-link :to="{ name: 'home' }">
 				<md-button>Home</md-button>
 			</router-link>
+			<router-link :to="{ name: 'locations' }">
+				<md-button>Locations</md-button>
+			</router-link>
 			<router-link :to="{ name: 'about' }">
 				<md-button>About</md-button>
+			</router-link>
+			<router-link :to="{ name: 'settings' }">
+				<md-button>Settings</md-button>
 			</router-link>
 		</md-toolbar>
 
