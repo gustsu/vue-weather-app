@@ -1,8 +1,6 @@
 <template>
 	<div class="home-page">
-		<md-content class="md-primary">
-			<h1>72</h1>
-			<md-icon style="color:#fff">wb_sunny</md-icon>
-		</md-content>
+		<h1>72</h1>
+		<md-icon>wb_sunny</md-icon>
 	</div>
 </template>

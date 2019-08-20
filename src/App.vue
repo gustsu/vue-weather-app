@@ -18,22 +18,19 @@ export default {
 @include md-register-theme(
 	'default',
 	(
-		primary: #ff502f,
+		primary: #0092d0,
 		accent: #32dbc6,
 		theme: light // This can be dark or light
 	)
 );
 @import '~vue-material/dist/theme/all';
+.md-ripple {
+	justify-items: center;
+	justify-content: center;
+}
 
-// body,
-// html {
-// 	min-height: 100vh;
-// 	background: #f0f0f0;
-// }
-
-// #app {
-// 	max-width: 440px;
-// 	width: 100%;
-// 	margin: 0px auto;
-// }
+html,
+body {
+	overflow: hidden;
+}
 </style>
