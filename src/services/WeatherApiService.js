@@ -1,17 +1,23 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-	baseURL: `https://min-api.cryptocompare.com`,
+	baseURL: `http://api.openweathermap.org`,
 	withCredentials: false, // This is the default
 	headers: {
 		Accept: 'application/json',
-		'Content-Type': 'application/json',
-		authorization: 'af5f7791c02e756d19c5e58c64d203b7641901df5173bad03ea486474c60cfeb'
+		'Content-Type': 'application/json'
 	}
 });
 
 export default {
-	getNews() {
-		return apiClient.get('/data/v2/news/');
+	getWeather() {
+		return apiClient.get(
+			'/data/2.5/weather?q=Spokane&units=imperial&APPID=94bd87ae0f0af17b71db61eb2c0d79d2'
+		);
+	},
+	getWeatherByCity(city) {
+		return apiClient.get(
+			'/data/2.5/weather?q=' + city + '&?units=metric&APPID=94bd87ae0f0af17b71db61eb2c0d79d2'
+		);
 	}
 };
