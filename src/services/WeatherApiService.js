@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-	baseURL: `http://api.openweathermap.org`,
+	baseURL: `https://api.openweathermap.org`,
 	withCredentials: false, // This is the default
 	headers: {
 		Accept: 'application/json',

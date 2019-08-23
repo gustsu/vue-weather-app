@@ -14,13 +14,15 @@ export default {
 </script>
 <style lang="scss">
 // setup theme
+$primary-color: #0092d0;
+$accent-color: #32dbc6;
 @import '~vue-material/dist/theme/engine';
 @include md-register-theme(
 	'default',
 	(
-		primary: #0092d0,
-		accent: #32dbc6,
-		theme: light // This can be dark or light
+		primary: $primary-color,
+		accent: $accent-color,
+		theme: dark // This can be dark or light
 	)
 );
 @import '~vue-material/dist/theme/all';
@@ -32,5 +34,10 @@ export default {
 html,
 body {
 	overflow: hidden;
+	padding: 0px 10px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-weight: 300;
+	background: linear-gradient(45deg, #614ad3, #e42c64);
 }
 </style>
