@@ -30,24 +30,35 @@ export default {
 			isLoading: true
 		};
 	},
-	created() {
-		WeatherApiService.getWeather()
-			.then(response => {
-				this.curCity = response.data.name;
-				this.curTemp = response.data.main.temp;
-				this.curCondition = response.data.weather[0].main;
-				this.curWind = response.data.wind.speed + ' m/s';
-				this.curHumidity = response.data.main.humidity + '%';
-				this.curIcon =
-					'https://openweathermap.org/img/wn/' +
-					response.data.weather[0].icon +
-					'@2x.png';
-				this.isLoading = false;
-				console.log(response.data);
-			})
-			.catch(error => {
-				console.log('errr: ' + error.response);
+	beforeMount() {
+		this.getWeather();
+		this.getLocation();
+	},
+	methods: {
+		getWeather() {
+			WeatherApiService.getWeather()
+				.then(response => {
+					this.curCity = response.data.name;
+					this.curTemp = response.data.main.temp;
+					this.curCondition = response.data.weather[0].main;
+					this.curWind = response.data.wind.speed + ' m/s';
+					this.curHumidity = response.data.main.humidity + '%';
+					this.curIcon =
+						'https://openweathermap.org/img/wn/' +
+						response.data.weather[0].icon +
+						'@2x.png';
+					this.isLoading = false;
+				})
+				.catch(error => {
+					console.log('errr: ' + error.response);
+				});
+		},
+		getLocation() {
+			navigator.geolocation.getCurrentPosition(function(pos) {
+				console.log('current lat: ' + pos.coords.latitude);
+				console.log('current lon: ' + pos.coords.longitude);
 			});
+		}
 	}
 };
 </script>
@@ -72,13 +83,13 @@ $accent-color: #32dbc6;
 	margin: 20px 0 50px;
 	flex-direction: row;
 	flex-wrap: wrap;
-	background: rgba(0, 0, 0, 0.1);
-	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
 	padding-bottom: 30px;
 	justify-items: center;
 	justify-content: center;
 	position: relative;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+	// box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 
 	.topper {
 		display: block;
