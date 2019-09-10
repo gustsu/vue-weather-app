@@ -31,7 +31,7 @@ export default {
 		};
 	},
 	beforeMount() {
-		// this.getWeather();
+		this.getWeather();
 		this.getLocation();
 	},
 	methods: {
@@ -48,53 +48,17 @@ export default {
 						response.data.weather[0].icon +
 						'@2x.png';
 					this.isLoading = false;
+					// console.log(response.data.name);
 				})
 				.catch(error => {
 					console.log('errr: ' + error.response);
 				});
 		},
 		getLocation() {
-			navigator.geolocation.getCurrentPosition(
-				function(pos) {
-					console.log('current lat: ' + pos.coords.latitude);
-					console.log('current lon: ' + pos.coords.longitude);
-
-					WeatherApiService.getWeatherByLatLon(pos.coords.latitude, pos.coords.longitude)
-						.then(response => {
-							this.curCity = response.data.name;
-							this.curTemp = response.data.main.temp;
-							this.curCondition = response.data.weather[0].main;
-							this.curWind = response.data.wind.speed + ' m/s';
-							this.curHumidity = response.data.main.humidity + '%';
-							this.curIcon =
-								'https://openweathermap.org/img/wn/' +
-								response.data.weather[0].icon +
-								'@2x.png';
-							this.isLoading = false;
-						})
-						.catch(error => {
-							console.log('errr: ' + error.response);
-						});
-				},
-				function(err) {
-					WeatherApiService.getWeatherByLatLon(0, 0)
-						.then(response => {
-							this.curCity = response.data.name;
-							this.curTemp = response.data.main.temp;
-							this.curCondition = response.data.weather[0].main;
-							this.curWind = response.data.wind.speed + ' m/s';
-							this.curHumidity = response.data.main.humidity + '%';
-							this.curIcon =
-								'https://openweathermap.org/img/wn/' +
-								response.data.weather[0].icon +
-								'@2x.png';
-							this.isLoading = false;
-						})
-						.catch(error => {
-							console.log('errr: ' + error.response);
-						});
-				}
-			);
+			navigator.geolocation.getCurrentPosition(function(pos) {
+				console.log('current lat: ' + pos.coords.latitude);
+				console.log('current lon: ' + pos.coords.longitude);
+			});
 		}
 	}
 };
