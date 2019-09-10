@@ -31,12 +31,11 @@ export default {
 		};
 	},
 	beforeMount() {
-		this.getWeather();
 		this.getLocation();
 	},
 	methods: {
-		getWeather() {
-			WeatherApiService.getWeather()
+		getWeather(lat, long) {
+			WeatherApiService.getWeatherByLatLon(lat, long)
 				.then(response => {
 					this.curCity = response.data.name;
 					this.curTemp = response.data.main.temp;
@@ -51,14 +50,22 @@ export default {
 					// console.log(response.data.name);
 				})
 				.catch(error => {
-					console.log('errr: ' + error.response);
+					console.log('Openweathermap error: ' + error.response);
 				});
 		},
 		getLocation() {
-			navigator.geolocation.getCurrentPosition(function(pos) {
-				console.log('current lat: ' + pos.coords.latitude);
-				console.log('current lon: ' + pos.coords.longitude);
-			});
+			navigator.geolocation.getCurrentPosition(
+				pos => {
+					console.log('current latitude: ' + pos.coords.latitude);
+					console.log('current longitude: ' + pos.coords.longitude);
+					this.getWeather(pos.coords.latitude, pos.coords.longitude);
+				},
+				error => {
+					//show New York as the location if geolocation is not supported by the browser or disabled by the user
+					console.log('Geolocation error: ' + error.response);
+					this.getWeather(40.63061, -73.835242);
+				}
+			);
 		}
 	}
 };
