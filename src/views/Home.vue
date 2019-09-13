@@ -1,9 +1,9 @@
 <template>
-	<div class="home-page">
+	<div v-bind:class="[curCondition]" class="home-page">
 		<div v-if="!isLoading">
-			<p class="city">{{ curCity }}</p>
+			<p class="city">{{ curCity }}, {{ curCountry }}</p>
 			<div class="mid-block">
-				<span class="topper">Currently Weather: {{ curCondition }}</span>
+				<span class="topper">Current Weather: {{ curCondition }}</span>
 				<div class="half-l">
 					<img :src="curIcon" />
 				</div>
@@ -38,6 +38,7 @@ export default {
 			WeatherApiService.getWeatherByLatLon(lat, long)
 				.then(response => {
 					this.curCity = response.data.name;
+					this.curCountry = response.data.sys.country;
 					this.curTemp = response.data.main.temp;
 					this.curCondition = response.data.weather[0].main;
 					this.curWind = response.data.wind.speed + ' m/s';
@@ -47,7 +48,7 @@ export default {
 						response.data.weather[0].icon +
 						'@2x.png';
 					this.isLoading = false;
-					// console.log(response.data.name);
+					console.log(response.data);
 				})
 				.catch(error => {
 					console.log('Openweathermap error: ' + error.response);
@@ -74,6 +75,26 @@ export default {
 <style lang="scss">
 $primary-color: #0092d0;
 $accent-color: #32dbc6;
+.home-page {
+	// background: $primary-color;
+	// height: 100vh;
+	// display: block;
+	// width: 100vw;
+	// position: relative;
+	// left: 0px;
+	// top: -15px;
+	// background: pink;
+	// padding-top: 30px;
+}
+.home-page.Clouds,
+.home-page.Clear,
+.home-page.Haze,
+.home-page.Smoke,
+.home-page.Snow,
+.home-page.Rain,
+.home-page.Thunderstorm {
+	display: block;
+}
 .city {
 	color: #fff;
 	border-radius: 10px;
