@@ -38,6 +38,8 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	font-weight: 300;
+	padding: 0px;
+	margin: 0px;
 	// background: linear-gradient(45deg, #614ad3, #e42c64);
 }
 </style>

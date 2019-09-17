@@ -76,25 +76,59 @@ export default {
 $primary-color: #0092d0;
 $accent-color: #32dbc6;
 .home-page {
-	// background: $primary-color;
-	// height: 100vh;
-	// display: block;
-	// width: 100vw;
-	// position: relative;
-	// left: 0px;
-	// top: -15px;
-	// background: pink;
-	// padding-top: 30px;
-}
-.home-page.Clouds,
-.home-page.Clear,
-.home-page.Haze,
-.home-page.Smoke,
-.home-page.Snow,
-.home-page.Rain,
-.home-page.Thunderstorm {
+	// background: $accent-color;
+	// background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+	// 	url('~@/assets/snowbg.jpg');
+	background-size: cover;
+	background-size: cover;
+	height: 100vh;
 	display: block;
+	width: 100vw;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	padding-top: 30px;
 }
+// .home-page.Clouds,
+// .home-page.Clear,
+// .home-page.Haze,
+// .home-page.Smoke,
+// .home-page.Snow,
+// .home-page.Rain,
+// .home-page.Thunderstorm {
+// 	display: block;
+// }
+
+.home-page.Rain {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url('~@/assets/rainbg.jpg');
+	background-size: cover;
+}
+
+.home-page.Clouds {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url('~@/assets/cloudbg.jpg');
+	background-size: cover;
+}
+
+.home-page.Thunderstorm {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url('~@/assets/lightningbg.jpg');
+	background-size: cover;
+}
+
+.home-page.Clear {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+		url('~@/assets/sunnybg.jpg');
+	background-size: cover;
+}
+
+.home-page.Snow {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+		url('~@/assets/snowbg.jpg');
+	background-size: cover;
+}
+
 .city {
 	color: #fff;
 	border-radius: 10px;
@@ -105,6 +139,7 @@ $accent-color: #32dbc6;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	margin: 0px;
 }
 .mid-block {
 	display: flex;
@@ -112,12 +147,12 @@ $accent-color: #32dbc6;
 	margin: 20px 0 50px;
 	flex-direction: row;
 	flex-wrap: wrap;
-	background: rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 	padding-bottom: 30px;
 	justify-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	position: relative;
+
 	// box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 
 	.topper {
